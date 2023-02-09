@@ -1,10 +1,16 @@
 import React from "react";
+import Footer from "./components/Footer";
+import Header from "./components/Header";
+import ToDo from "./ToDo/ToDo";
 
-function App () {
+function App() {
     return (
-        <h1>
-            Hello world! I am using React
-        </h1>
+
+        <div>
+            <Header/>
+            <Footer/>
+        </div>
+
     )
 }
 

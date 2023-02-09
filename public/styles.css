@@ -1,0 +1,11 @@
+html {
+  text-align: center;
+  height: 100%;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: large;
+}
+
+.navbar {
+  background-color: rgba(128, 128, 128, 0.09);
+  position: relative;
+}
