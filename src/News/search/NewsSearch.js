@@ -1,9 +1,8 @@
 import { useState } from "react"
 import { AsyncPaginate } from "react-select-async-paginate"
-import { GEO_API_URL, geoApiOptions } from '../../api'
+import { KEYWORD_SUGGESTION_API_URL, suggestionApiOptions} from '../../api'
 
-
-const Search = ({ onSearchChange }) => {
+const NewsSearch = ({ onSearchChange }) => {
 
     const [search, setSearch] = useState(null);
 
@@ -15,13 +14,14 @@ const Search = ({ onSearchChange }) => {
 
     const loadOptions = async (inputValue) => {
         try {
-            const response = await fetch(`${GEO_API_URL}/cities?minPopulation=1000000&namePrefix=${inputValue}`, geoApiOptions);
-            const response_1 = await response.json();
+            const response = await fetch(`${KEYWORD_SUGGESTION_API_URL}suggestqueries?query=${inputValue}`, suggestionApiOptions);
+            const result = await response.json();
+            // console.log(result);
             return {
-                options: response_1.data.map((city) => {
+                options: result.map((suggestion) => {
                     return {
-                        value: `${city.latitude} ${city.longitude}`,
-                        label: `${city.name} ${city.countryCode}`,
+                        value: `value`,
+                        label: `${suggestion}`,
                     };
                 })
             };
@@ -32,7 +32,7 @@ const Search = ({ onSearchChange }) => {
 
     return (
         <AsyncPaginate
-            placeholder="Search for city"
+            placeholder="Search for something interesting!"
             debounceTimeout={600}
             value={search}
             onChange={handleOnChange}
@@ -41,4 +41,4 @@ const Search = ({ onSearchChange }) => {
     )
 }
 
-export default Search
+export default NewsSearch

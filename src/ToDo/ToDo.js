@@ -33,7 +33,7 @@ const ToDo = () => {
   };
   return (
     <Container className="container">
-      <h2>Add Your Tasks Here!</h2>
+      <h2>Today's Tasks</h2>
       <br />
       <div className="todos-container">
         {todos.map((todo, index) => (
